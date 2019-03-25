@@ -8,10 +8,10 @@ namespace EAAutoFramework.Base
     public abstract class BasePage
     {
         public RemoteWebDriver _driver;
-        public BasePage(RemoteWebDriver driver)
+        public BasePage()
         {
 
-            _driver = driver;
+            _driver = DriverContext.Driver;
         }
 
     }
