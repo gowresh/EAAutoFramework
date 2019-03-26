@@ -1,5 +1,6 @@
 ﻿using System;
 using EAAutoFramework.Base;
+using EAAutoFramework.Helpers;
 using EAEmployeeTest.Pages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
@@ -35,7 +36,10 @@ namespace EAEmployeeTest
         [TestMethod]
         public void TestMethod1()
         {
-            
+            string filenName = Environment.CurrentDirectory.ToString() + "\\Data\\Login.xlsx";
+            ExcelHelpers.PopulateInCollection(filenName);
+
+
             OpenBrowser(BrowserType.Chrome);
             DriverContext.Browser.GotoUrl(url);
 
@@ -43,7 +47,7 @@ namespace EAEmployeeTest
             CurrentPage = GetInstance<LoginPage>();
                 
             //HomePage
-            CurrentPage = CurrentPage.As<LoginPage>().Login("val1", "qwer1234");
+            CurrentPage = CurrentPage.As<LoginPage>().Login(ExcelHelpers.ReadData(1,"UserName"), ExcelHelpers.ReadData(2,"Password"));
 
             //ManagedContactsPage
             CurrentPage = CurrentPage.As<HomePage>().ClickManagedContacts();
