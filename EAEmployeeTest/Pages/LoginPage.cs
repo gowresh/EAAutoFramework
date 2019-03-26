@@ -9,9 +9,9 @@ namespace EAEmployeeTest.Pages
 {
     class LoginPage : BasePage
     {
-        public IWebElement txtUserName => _driver.FindElement(By.XPath("//*[@placeholder='Username']"));
-        public IWebElement txtPassword => _driver.FindElement(By.XPath("//*[@placeholder='Password']"));
-        public IWebElement btnLogin => _driver.FindElement(By.XPath("//span[text()='Sign In']"));
+         IWebElement txtUserName => _driver.FindElement(By.XPath("//*[@placeholder='Username']"));
+         IWebElement txtPassword => _driver.FindElement(By.XPath("//*[@placeholder='Password']"));
+         IWebElement btnLogin => _driver.FindElement(By.XPath("//span[text()='Sign In']"));
 
         public HomePage Login(string userName, string password)
         {
@@ -19,7 +19,7 @@ namespace EAEmployeeTest.Pages
             txtUserName.SendKeys(userName);
             txtPassword.SendKeys(password);
             btnLogin.Click();
-            return new HomePage();
+            return GetInstance<HomePage>();
         }
 
     }

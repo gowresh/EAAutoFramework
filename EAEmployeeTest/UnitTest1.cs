@@ -22,12 +22,21 @@ namespace EAEmployeeTest
             DriverContext.Driver.Manage().Window.Maximize();
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
             DriverContext.Driver.Navigate().GoToUrl(url);
-            LoginPage loginPage = new LoginPage();
 
-            CurrentPage  = loginPage.Login("val1", "qwer1234");
-            CurrentPage = ((HomePage)CurrentPage).ClickManagedContacts();
-             ((ManagedContactsPage)CurrentPage).ClickGLink();
-           
+            //LoginPage loginPage = new LoginPage();
+            //CurrentPage  = loginPage.Login("val1", "qwer1234");
+            //CurrentPage = ((HomePage)CurrentPage).ClickManagedContacts();
+            // ((ManagedContactsPage)CurrentPage).ClickGLink();
+
+            //LoginPage
+            CurrentPage = GetInstance<LoginPage>();
+                
+            //HomePage
+            CurrentPage = CurrentPage.As<LoginPage>().Login("val1", "qwer1234");
+
+            //ManagedContactsPage
+            CurrentPage = CurrentPage.As<HomePage>().ClickManagedContacts();
+            CurrentPage.As<ManagedContactsPage>().ClickGLink();
         }
 
    

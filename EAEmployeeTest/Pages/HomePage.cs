@@ -10,12 +10,12 @@ namespace EAEmployeeTest.Pages
 {
     class HomePage : BasePage
     {
-        public IWebElement lnkManagedContacts => _driver.FindElement(By.XPath("//div[text() ='Managed Contacts']"));
+         IWebElement lnkManagedContacts => _driver.FindElement(By.XPath("//div[text() ='Managed Contacts']"));
 
         public ManagedContactsPage ClickManagedContacts()
         {
            lnkManagedContacts.Click();
-           return new ManagedContactsPage();
+           return GetInstance<ManagedContactsPage>();
         }
     }
 }

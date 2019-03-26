@@ -10,7 +10,7 @@ namespace EAEmployeeTest.Pages
 {
     class ManagedContactsPage : BasePage
     {
-        public IWebElement lnkG => _driver.FindElement(By.XPath("//a[1][text() ='G']"));  
+         IWebElement lnkG => _driver.FindElement(By.XPath("//a[1][text() ='G']"));  
 
         public void ClickGLink()
         {
