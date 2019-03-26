@@ -13,6 +13,14 @@ namespace EAEmployeeTest.Pages
         public IWebElement txtPassword => _driver.FindElement(By.XPath("//*[@placeholder='Password']"));
         public IWebElement btnLogin => _driver.FindElement(By.XPath("//span[text()='Sign In']"));
 
+        public HomePage Login(string userName, string password)
+        {
+           
+            txtUserName.SendKeys(userName);
+            txtPassword.SendKeys(password);
+            btnLogin.Click();
+            return new HomePage();
+        }
 
     }
 }

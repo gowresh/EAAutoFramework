@@ -22,16 +22,13 @@ namespace EAEmployeeTest
             DriverContext.Driver.Manage().Window.Maximize();
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             DriverContext.Driver.Navigate().GoToUrl(url);
-            Login();
+            LoginPage loginPage = new LoginPage();
+            HomePage homePage = loginPage.Login("val1", "qwer1234");
+            ManagedContactsPage manageContactsPage = homePage.ClickManagedContacts();
+
 
         }
 
-        public void Login()
-        {
-            LoginPage Loginpage = new LoginPage();
-            Loginpage.txtUserName.SendKeys("val1");
-            Loginpage.txtPassword.SendKeys("qwer1234");
-            Loginpage.btnLogin.Click();
-        }
+   
     }
 }
