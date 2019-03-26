@@ -10,7 +10,7 @@ using OpenQA.Selenium.Remote;
 namespace EAEmployeeTest
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest1 : Base
     {
         string url = "http://10.183.139.76:81/40";
       
@@ -20,13 +20,14 @@ namespace EAEmployeeTest
         {
             DriverContext.Driver = new ChromeDriver(@"C:\Users\gnagesh\Downloads\chromedriver_win32");
             DriverContext.Driver.Manage().Window.Maximize();
-            DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
             DriverContext.Driver.Navigate().GoToUrl(url);
             LoginPage loginPage = new LoginPage();
-            HomePage homePage = loginPage.Login("val1", "qwer1234");
-            ManagedContactsPage manageContactsPage = homePage.ClickManagedContacts();
 
-
+            CurrentPage  = loginPage.Login("val1", "qwer1234");
+            CurrentPage = ((HomePage)CurrentPage).ClickManagedContacts();
+             ((ManagedContactsPage)CurrentPage).ClickGLink();
+           
         }
 
    
